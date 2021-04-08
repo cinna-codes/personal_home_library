@@ -72,7 +72,7 @@ const showBooks = function() {
 // authors show
 
 // home 
-const newAuthor = `<form id="author">
+const newAuthor = `<form id="author_form">
 <label>Name:</label><br>
 <input type="text" id="name" value="Name"><br>
 <label>Bio:</label><br>
@@ -81,6 +81,9 @@ const newAuthor = `<form id="author">
 </form>`
 const showHome = function() {
     rootEl.innerHTML += newAuthor
+    document.getElementById("author_form").addEventListener("submit", function (e) {
+        e.preventDefault()
+    })
 }
 // home
 
