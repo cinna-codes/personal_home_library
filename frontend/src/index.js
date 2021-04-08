@@ -3,10 +3,6 @@ const headerHome = document.getElementById('headerHome')
 const headerBooks = document.getElementById('headerBooks')
 const headerAuthors = document.getElementById('headerAuthors')
 
-const test = function(e) {
-    console.log(e.target)
-}
-
 // books index
 const showBooks = function() {
     fetch(`http://localhost:3000/books`)
@@ -26,6 +22,10 @@ const showBooks = function() {
     // rootEl.innerHTML += `<p>book title</p> <p>book author_name</p> <p>book summary</p>`
 // books show
 
+const test = function() {
+    console.log("test")
+}
+
 // authors index
     const showAuthors = function() {
         fetch("http://localhost:3000/authors")
@@ -36,7 +36,7 @@ const showBooks = function() {
                 const newAuthor = new Author(authorObj)
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
-            console.log(document.querySelectorAll(".author"))
+            document.querySelectorAll(".author").forEach(singleAuthor => singleAuthor.addEventListener("click", test))
         })
     }
 // authors index
