@@ -82,12 +82,12 @@ const newAuthor = `<form id="author_form">
 // authors new
     function createNewAuthor(authorObj) {
         fetch(`http://localhost:3000/authors`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(authorObj)
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(authorObj)
         })
         .then((res) => res.json())
         .then((author) => {
@@ -105,6 +105,22 @@ const newAuthor = `<form id="author_form">
     <input type="text" id="pages" value="Page count"><br><br>
     <input type="submit" value="Submit">
     </form>`
+
+    function createNewBook(bookObj) {
+        fetch(`http://localhost:3000/books`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(bookObj)
+        })
+        .then((res) => res.json())
+        .then((book) => {
+        const newBook = new Book(book)
+        rootEl.innerHTML += `<p class="book" id=${book.id}>${newBook.title}</p> — <p>${newBook.pages}</p>`
+        })
+      }
 // books new
 
 const showHome = function() {
