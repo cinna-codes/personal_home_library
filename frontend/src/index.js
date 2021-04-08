@@ -4,15 +4,21 @@ const headerBooks = document.getElementById('headerBooks')
 const headerAuthors = document.getElementById('headerAuthors')
 
 // books index
-fetch("http://localhost:3000/books")
-.then((res) => res.json())
-.then((books) => renderBooks(books))
-
-const renderBooks = function(books) {
-    books.forEach(book => {
-        rootEl.innerHTML += `<p>${book.title}</p>`
-    })
+const showBooks = function() {
+    console.log("Boop")
+    fetch("http://localhost:3000/books")
+    .then((res) => res.json())
+    .then((books) => renderBooks(books))
+    
+    const renderBooks = function(books) {
+        console.log(books)
+        books.forEach(book => {
+            rootEl.innerHTML += `<p>${book.title}</p>`
+        })
+    }
 }
+
+
 // books index
 
 // books show
@@ -50,3 +56,13 @@ const renderBooks = function(books) {
 // authors new
     // fetch post request for creating author
 // authors new
+
+const clearRootEl = function() {
+    rootEl.innerHTML = ``
+}
+// headerHome.addEventListener("click", clearRootEl)
+// headerHome.addEventListener("click", showHome)
+headerBooks.addEventListener("click", clearRootEl)
+headerBooks.addEventListener("click", showBooks)
+// headerAuthors.addEventListener("click", clearRootEl)
+// headerAuthors.addEventListener("click", showAuthors)
