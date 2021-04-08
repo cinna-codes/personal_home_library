@@ -13,7 +13,7 @@ const showBooks = function() {
     const renderBooks = function(books) {
         console.log(books)
         books.forEach(book => {
-            rootEl.innerHTML += `<p>${book.title}</p>`
+            rootEl.innerHTML += `<p><i>${book.title}</i> — ${book.author_name}</p>`
         })
     }
 }
