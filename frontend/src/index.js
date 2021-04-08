@@ -22,9 +22,26 @@ const showBooks = function() {
     // rootEl.innerHTML += `<p>book title</p> <p>book author_name</p> <p>book summary</p>`
 // books show
 
-const test = function() {
-    console.log("test")
+const test = function(e) {
+    console.log(e.target.id)
+    const id = e.target.id
+    // fetch(`http://localhost:3000/books`)
+    // .then((res) => res.json())
+    // .then((books) => {
+    //     books.forEach(bookObj => {
+    //         const newBook = new Book(bookObj)
+    //         rootEl.innerHTML += newBook.renderSingleBook()
+    //     })
+    // })
 }
+
+// authors show
+    // fetch request 
+    // clear rootEl
+    // rootEl.innerHTML += `<p>author name</p> <p>author bio</p>`
+    // iterate over author's books
+    // rootEl.innerHTML += `<p>book title, book pagecount</p>`
+// authors show
 
 // authors index
     const showAuthors = function() {
@@ -40,14 +57,6 @@ const test = function() {
         })
     }
 // authors index
-
-// authors show
-    // fetch request 
-    // clear rootEl
-    // rootEl.innerHTML += `<p>author name</p> <p>author bio</p>`
-    // iterate over author's books
-    // rootEl.innerHTML += `<p>book title, book pagecount</p>`
-// authors show
 
 // home 
 const newAuthor = `<form id="author_form">
