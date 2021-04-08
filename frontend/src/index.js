@@ -23,14 +23,31 @@ const showBooks = function() {
 // books show
 
 const test = function(e) {
-    console.log(e.target.id)
+    console.log(e.target)
     const id = e.target.id
-    // fetch(`http://localhost:3000/books`)
+    clearRootEl()
+    fetch(`http://localhost:3000/authors/${id}`)
+        .then((res) => res.json())
+        .then(author => {
+            const newAuthor = new Author(author)
+            rootEl.innerHTML += newAuthor.renderSingleAuthor()
+        })
+    // console.log(e.target.id)
+    // const id = e.target.id
+    // e.target.innerHTML += `<ul id="${id}"></ul>`
+    // debugger
+    // console.log(document.querySelector("ul[id='${id}']"))
+    // // debugger
+    // fetch(`http://localhost:3000/authors/${id}/books`)
     // .then((res) => res.json())
     // .then((books) => {
+    //     // const ul = `<ul></ul>`
+    //     // e.target.innerHTML += `<ul id="${id}"></ul>`
+    //     // console.log(document.querySelector("ul[id='${id}']"))
+    //     debugger
     //     books.forEach(bookObj => {
     //         const newBook = new Book(bookObj)
-    //         rootEl.innerHTML += newBook.renderSingleBook()
+    //         document.querySelector("ul[id='${id}']").innerHTML += `<li>${newBook}.renderSingleBook()</li>`
     //     })
     // })
 }
