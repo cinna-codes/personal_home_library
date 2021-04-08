@@ -97,7 +97,7 @@ const newAuthor = `<form id="author_form">
         .then((res) => res.json())
         .then((author) => {
         const newAuthor = new Author(author)
-        rootEl.innerHTML += `<p class="author" id=${newAuthor.id}>${newAuthor.name}</p> <p>${newAuthor.bio}</p>` // renderSingleAuthor()
+        rootEl.innerHTML += newAuthor.renderSingleAuthor()
         })
       }
 // authors new
