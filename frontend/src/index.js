@@ -15,13 +15,12 @@ const test = function(e) {
 const showBooks = function() {
     fetch(`http://localhost:3000/books`)
     .then((res) => res.json())
-    .then((books) => renderBooks(books))
-    const renderBooks = function(books) {
-        console.log(books)
-        books.forEach(book => {
-            rootEl.innerHTML += `<p class="book" id=${book.id}>${book.title} — ${book.pages}</p>`
+    .then((books) => {
+        books.forEach(bookObj => {
+            const newBook = new Book(bookObj)
+            rootEl.innerHTML += newBook.renderSingleBook()
         })
-    }
+    })
 }
     // document.querySelectorAll(".book").forEach(book => {
     //     book.addEventListener("click", test)
@@ -123,8 +122,7 @@ const newAuthor = `<form id="author_form">
         .then((res) => res.json())
         .then((book) => {
         const newBook = new Book(book)
-        debugger
-        rootEl.innerHTML += `<p class="book" id=${book.id}>${newBook.title}</p> — <p>${newBook.pages}</p>`
+        rootEl.innerHTML += newBook.renderSingleBook()
         })
       }
 // books new
