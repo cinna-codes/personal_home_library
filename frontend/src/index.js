@@ -90,7 +90,7 @@ const newAuthor = `<form id="author_form">
     function createNewAuthor(authorObj) {
         fetch(`http://localhost:3000/authors`, {
           method: "POST",
-          body: data,
+          body: authorObj,
         })
           .then((res) => res.json())
           .then((author) => {
