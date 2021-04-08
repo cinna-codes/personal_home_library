@@ -6,7 +6,7 @@ class Author {
     }
 
     renderSingleAuthor() {
-        `<p>${this.name} <br>
+        return `<p>${this.name} <br>
         <i>${this.bio}</i>
         </p>`
     }

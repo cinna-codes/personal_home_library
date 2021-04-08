@@ -48,16 +48,22 @@ const showBooks = function() {
         // rootEl.innerHTML += `<p>author name</p>`
 
     const showAuthors = function() {
-    fetch("http://localhost:3000/authors")
-    .then((res) => res.json())
-    .then((authors) => renderAuthors(authors))
-    
-        const renderAuthors = function(authors) {
-            console.log(authors)
-            authors.forEach(author => {
-                rootEl.innerHTML += `<p class="author" id=${author.id}>${author.name}</p>`
+        fetch("http://localhost:3000/authors")
+        .then((res) => res.json())
+        .then((authors) => {
+            authors.forEach(authorObj => {
+                //debugger
+                const newAuthor = new Author(authorObj)
+                rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
-        }
+        })
+    
+        // const renderAuthors = function(authors) {
+        //     console.log(authors)
+        //     authors.forEach(author => {
+        //         rootEl.innerHTML += `<p class="author" id=${author.id}>${author.name}</p>`
+        //     })
+        // }
     }
 // authors index
 
@@ -117,6 +123,7 @@ const newAuthor = `<form id="author_form">
         .then((res) => res.json())
         .then((book) => {
         const newBook = new Book(book)
+        debugger
         rootEl.innerHTML += `<p class="book" id=${book.id}>${newBook.title}</p> — <p>${newBook.pages}</p>`
         })
       }
