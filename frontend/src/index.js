@@ -97,6 +97,16 @@ const newAuthor = `<form id="author_form">
       }
 // authors new
 
+// books new
+    const newBook = `<form id="book_form">
+    <label>Title:</label><br>
+    <input type="text" id="title" value="Title"><br>
+    <label>Page count:</label><br>
+    <input type="text" id="pages" value="Page count"><br><br>
+    <input type="submit" value="Submit">
+    </form>`
+// books new
+
 const showHome = function() {
     rootEl.innerHTML += newAuthor
     document.getElementById("author_form").addEventListener("submit", function (e) {
@@ -107,9 +117,6 @@ const showHome = function() {
 }
 // home
 
-// books new
-    // fetch post request for creating book
-// books new
 
 
 const clearRootEl = function() {
