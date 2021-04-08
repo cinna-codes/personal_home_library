@@ -22,7 +22,7 @@ const showBooks = function() {
     // rootEl.innerHTML += `<p>book title</p> <p>book author_name</p> <p>book summary</p>`
 // books show
 
-const test = function(e) {
+const showSingleAuthor = function(e) {
     console.log(e.target)
     const id = e.target.id
     clearRootEl()
@@ -32,33 +32,18 @@ const test = function(e) {
             const newAuthor = new Author(author)
             rootEl.innerHTML += newAuthor.renderSingleAuthor()
         })
-    // console.log(e.target.id)
-    // const id = e.target.id
-    // e.target.innerHTML += `<ul id="${id}"></ul>`
-    // debugger
-    // console.log(document.querySelector("ul[id='${id}']"))
-    // // debugger
-    // fetch(`http://localhost:3000/authors/${id}/books`)
-    // .then((res) => res.json())
-    // .then((books) => {
-    //     // const ul = `<ul></ul>`
-    //     // e.target.innerHTML += `<ul id="${id}"></ul>`
-    //     // console.log(document.querySelector("ul[id='${id}']"))
-    //     debugger
-    //     books.forEach(bookObj => {
-    //         const newBook = new Book(bookObj)
-    //         document.querySelector("ul[id='${id}']").innerHTML += `<li>${newBook}.renderSingleBook()</li>`
-    //     })
-    // })
-}
 
-// authors show
-    // fetch request 
-    // clear rootEl
-    // rootEl.innerHTML += `<p>author name</p> <p>author bio</p>`
-    // iterate over author's books
-    // rootEl.innerHTML += `<p>book title, book pagecount</p>`
-// authors show
+        fetch(`http://localhost:3000/authors/${id}/books`)
+        .then((res) => res.json())
+        .then((books) => {
+            rootEl.innerHTML += `<ul></ul>`
+
+            books.forEach(bookObj => {
+                const newBook = new Book(bookObj)
+                document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
+            })
+        })    // // debugger
+}
 
 // authors index
     const showAuthors = function() {
@@ -70,7 +55,7 @@ const test = function(e) {
                 const newAuthor = new Author(authorObj)
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
-            document.querySelectorAll(".author").forEach(singleAuthor => singleAuthor.addEventListener("click", test))
+            document.querySelectorAll(".author").forEach(singleAuthor => singleAuthor.addEventListener("click", showSingleAuthor))
         })
     }
 // authors index
