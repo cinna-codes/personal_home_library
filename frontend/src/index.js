@@ -134,7 +134,7 @@ const showHome = function() {
     document.getElementById("book_form").addEventListener("submit", function (e) {
         e.preventDefault()
         const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
-        createNewAuthor(bookObj)
+        createNewBook(bookObj)
     })
 }
 // home
