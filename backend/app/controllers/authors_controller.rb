@@ -10,6 +10,14 @@ class AuthorsController < ApplicationController
     end
 
     def create
+        author = Author.new(author_params)
+        if author.save
+            render json: author
+        end
+    end
 
+    private
+    def author_params
+        params.require(:author).permit(:name, :bio)
     end
 end
