@@ -20,6 +20,7 @@ const showBooks = function() {
     const renderBooks = function(books) {
         console.log(books)
         books.forEach(book => {
+            debugger
             rootEl.innerHTML += `<p class="book" id=${book.id}>${book.title} — ${book.author_name}</p>`
         })
         // document.querySelectorAll(".book").forEach(book => {
@@ -71,10 +72,16 @@ const showBooks = function() {
 // authors show
 
 // home 
-    // clear rootEl
-    // rootEl.innerHTML += `New Book` give id
-    // rootEl.innerHTML += `New Author` give id
-    // addEventListener to both
+const newAuthor = `<form id="author">
+<label>Name:</label><br>
+<input type="text" id="name" value="Name"><br>
+<label>Bio:</label><br>
+<input type="text" id="bio" value="Bio"><br><br>
+<input type="submit" value="Submit">
+</form>`
+const showHome = function() {
+    rootEl.innerHTML += newAuthor
+}
 // home
 
 // books new
@@ -88,8 +95,8 @@ const showBooks = function() {
 const clearRootEl = function() {
     rootEl.innerHTML = ``
 }
-// headerHome.addEventListener("click", clearRootEl)
-// headerHome.addEventListener("click", showHome)
+headerHome.addEventListener("click", clearRootEl)
+headerHome.addEventListener("click", showHome)
 headerBooks.addEventListener("click", clearRootEl)
 headerBooks.addEventListener("click", showBooks)
 headerAuthors.addEventListener("click", clearRootEl)
