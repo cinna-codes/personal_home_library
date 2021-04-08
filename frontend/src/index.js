@@ -75,7 +75,7 @@ const newAuthor = `<form id="author_form">
 <label>Name:</label><br>
 <input type="text" id="name" value="Name"><br>
 <label>Bio:</label><br>
-<input type="text" id="bio" value="Bio"><br><br>
+<input type="text" id="bio" value="Bio"><br>
 <input type="submit" value="Submit">
 </form>`
 
@@ -102,7 +102,7 @@ const newAuthor = `<form id="author_form">
     <label>Title:</label><br>
     <input type="text" id="title" value="Title"><br>
     <label>Page count:</label><br>
-    <input type="text" id="pages" value="Page count"><br><br>
+    <input type="text" id="pages" value="Page count"><br>
     <input type="submit" value="Submit">
     </form>`
 
@@ -125,6 +125,7 @@ const newAuthor = `<form id="author_form">
 
 const showHome = function() {
     rootEl.innerHTML += newAuthor
+    rootEl.innerHTML += newBook
     document.getElementById("author_form").addEventListener("submit", function (e) {
         e.preventDefault()
         const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
