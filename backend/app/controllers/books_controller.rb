@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
     def index
-        books = Book.all
+        if params[:author_id]
+            books = Book.where(author_id: params[:author_id])
+        else
+            books = Book.all
+        end
         render json: books
     end
 
