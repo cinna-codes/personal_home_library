@@ -86,6 +86,18 @@ const newAuthor = `<form id="author_form">
         // .then (first promise)
         // .then (second promise, bulk of work)
     // }
+
+    function createNewAuthor(authorObj) {
+        fetch(`http://localhost:3000/authors`, {
+          method: "POST",
+          body: data,
+        })
+          .then((res) => res.json())
+          .then((author) => {
+            const newAuthor = new Author(author);
+            rootEl.innerHTML += `<p class="author" id=${newAuthor.id}>${newAuthor.name}</p> <p>${newAuthor.bio}</p>` // renderSingleAuthor()
+          })
+      }
 // authors new
 
 const showHome = function() {
