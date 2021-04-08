@@ -3,9 +3,16 @@ const headerHome = document.getElementById('headerHome')
 const headerBooks = document.getElementById('headerBooks')
 const headerAuthors = document.getElementById('headerAuthors')
 
-const test = function() {
-    console.log("Testing")
+// const testTwo = function(e) {
+
+// }
+const test = function(e) {
+    console.log(e.target)
+    const { id } = e.target.dataset;
+    console.log(id)
+    //e.addEventListener("click", testTwo)
 }
+
 // books index
 const showBooks = function() {
     console.log("Boop")
@@ -16,12 +23,11 @@ const showBooks = function() {
     const renderBooks = function(books) {
         console.log(books)
         books.forEach(book => {
-            rootEl.innerHTML += `<p class="book" id=${book.id}><i>${book.title}</i> — ${book.author_name}</p>`
+            rootEl.innerHTML += `<p class="book" id=${book.id}>${book.title} — ${book.author_name}</p>`
         })
-
-        document.querySelectorAll(".book").forEach(book => {
-            book.addEventListener("click", test)
-        })
+        // document.querySelectorAll(".book").forEach(book => {
+        //     book.addEventListener("click", test)
+        // })
     }
 
     // const renderBookOnIndex = function(book) {
