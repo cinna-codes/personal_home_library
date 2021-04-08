@@ -3,12 +3,8 @@ const headerHome = document.getElementById('headerHome')
 const headerBooks = document.getElementById('headerBooks')
 const headerAuthors = document.getElementById('headerAuthors')
 
-// const testTwo = function(e) {
-
-// }
 const test = function(e) {
     console.log(e.target)
-    //e.addEventListener("click", testTwo)
 }
 
 // books index
@@ -22,16 +18,6 @@ const showBooks = function() {
         })
     })
 }
-    // document.querySelectorAll(".book").forEach(book => {
-    //     book.addEventListener("click", test)
-    // })
-
-    // const renderBookOnIndex = function(book) {
-    //     rootEl.innerHTML += `<p class="book" id=${book.id}><i>${book.title}</i> — ${book.author_name}</p>`
-    //     document.getElementById(book.id).addEventListener("click", test)
-    // }
-
-
 // books index
 
 // books show
@@ -41,11 +27,6 @@ const showBooks = function() {
 // books show
 
 // authors index
-    // fetch request
-    // clear rootEl (has to come BEFORE iterating)
-    // iterate over authors
-        // rootEl.innerHTML += `<p>author name</p>`
-
     const showAuthors = function() {
         fetch("http://localhost:3000/authors")
         .then((res) => res.json())
@@ -56,13 +37,6 @@ const showBooks = function() {
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
         })
-    
-        // const renderAuthors = function(authors) {
-        //     console.log(authors)
-        //     authors.forEach(author => {
-        //         rootEl.innerHTML += `<p class="author" id=${author.id}>${author.name}</p>`
-        //     })
-        // }
     }
 // authors index
 
@@ -142,8 +116,6 @@ const showHome = function() {
     })
 }
 // home
-
-
 
 const clearRootEl = function() {
     rootEl.innerHTML = ``
