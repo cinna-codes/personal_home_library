@@ -1,7 +1,7 @@
 class Book {
     constructor(bookObj) {
-        this.title = bookObj.name
-        this.pages = bookObj.bio
+        this.title = bookObj.title
+        this.pages = bookObj.pages
         Book.all.push(this);
     }
 
