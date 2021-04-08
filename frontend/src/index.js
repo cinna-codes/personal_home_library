@@ -8,14 +8,11 @@ const headerAuthors = document.getElementById('headerAuthors')
 // }
 const test = function(e) {
     console.log(e.target)
-    const { id } = e.target.dataset;
-    console.log(id)
     //e.addEventListener("click", testTwo)
 }
 
 // books index
 const showBooks = function() {
-    console.log("Boop")
     fetch("http://localhost:3000/books")
     .then((res) => res.json())
     .then((books) => renderBooks(books))
@@ -50,6 +47,19 @@ const showBooks = function() {
     // clear rootEl (has to come BEFORE iterating)
     // iterate over authors
         // rootEl.innerHTML += `<p>author name</p>`
+
+    const showAuthors = function() {
+    fetch("http://localhost:3000/authors")
+    .then((res) => res.json())
+    .then((authors) => renderAuthors(authors))
+    
+        const renderAuthors = function(authors) {
+            console.log(authors)
+            authors.forEach(author => {
+                rootEl.innerHTML += `<p class="author" id=${author.id}>${author.name}</p>`
+            })
+        }
+    }
 // authors index
 
 // authors show
@@ -82,5 +92,5 @@ const clearRootEl = function() {
 // headerHome.addEventListener("click", showHome)
 headerBooks.addEventListener("click", clearRootEl)
 headerBooks.addEventListener("click", showBooks)
-// headerAuthors.addEventListener("click", clearRootEl)
-// headerAuthors.addEventListener("click", showAuthors)
+headerAuthors.addEventListener("click", clearRootEl)
+headerAuthors.addEventListener("click", showAuthors)
