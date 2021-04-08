@@ -13,25 +13,24 @@ const test = function(e) {
 
 // books index
 const showBooks = function() {
-    fetch("http://localhost:3000/books")
+    fetch(`http://localhost:3000/books`)
     .then((res) => res.json())
     .then((books) => renderBooks(books))
-    
     const renderBooks = function(books) {
         console.log(books)
         books.forEach(book => {
-            rootEl.innerHTML += `<p class="book" id=${book.id}>${book.title} — ${book.author_name}</p>`
+            rootEl.innerHTML += `<p class="book" id=${book.id}>${book.title} — ${book.pages}</p>`
         })
-        // document.querySelectorAll(".book").forEach(book => {
-        //     book.addEventListener("click", test)
-        // })
     }
+}
+    // document.querySelectorAll(".book").forEach(book => {
+    //     book.addEventListener("click", test)
+    // })
 
     // const renderBookOnIndex = function(book) {
     //     rootEl.innerHTML += `<p class="book" id=${book.id}><i>${book.title}</i> — ${book.author_name}</p>`
     //     document.getElementById(book.id).addEventListener("click", test)
     // }
-}
 
 
 // books index

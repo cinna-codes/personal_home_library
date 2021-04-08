@@ -4,7 +4,6 @@ class Book {
         this.pages = bookObj.pages
         Book.all.push(this);
     }
-
 }
 
 Book.all = []
