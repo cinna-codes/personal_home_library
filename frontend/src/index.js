@@ -1,7 +1,7 @@
 const rootEl = document.getElementById('root')
 const headerHome = document.getElementById('headerHome')
 const headerBooks = document.getElementById('headerBooks')
-const headerAuthors = documet.getElementById('headerAuthors')
+const headerAuthors = document.getElementById('headerAuthors')
 
 fetch("http://localhost:3000/books")
 .then((res) => res.json())
