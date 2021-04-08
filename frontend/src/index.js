@@ -79,10 +79,21 @@ const newAuthor = `<form id="author_form">
 <input type="text" id="bio" value="Bio"><br><br>
 <input type="submit" value="Submit">
 </form>`
+
+// authors new
+    // const createNewAuthor = function(authorObj) {
+        // fetch request POST
+        // .then (first promise)
+        // .then (second promise, bulk of work)
+    // }
+// authors new
+
 const showHome = function() {
     rootEl.innerHTML += newAuthor
     document.getElementById("author_form").addEventListener("submit", function (e) {
         e.preventDefault()
+        // grab name/bio data from the form, then enter it into...
+        // createNewAuthor()
     })
 }
 // home
@@ -91,9 +102,6 @@ const showHome = function() {
     // fetch post request for creating book
 // books new
 
-// authors new
-    // fetch post request for creating author
-// authors new
 
 const clearRootEl = function() {
     rootEl.innerHTML = ``
