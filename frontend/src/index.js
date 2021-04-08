@@ -36,6 +36,7 @@ const showBooks = function() {
                 const newAuthor = new Author(authorObj)
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
+            console.log(document.querySelectorAll(".author"))
         })
     }
 // authors index
