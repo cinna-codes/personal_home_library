@@ -12,4 +12,9 @@ class BooksController < ApplicationController
     def create
 
     end
+
+    private
+    def book_params
+        params.require(:book).permit(:title, :pages)
+    end
 end

@@ -131,6 +131,11 @@ const showHome = function() {
         const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
         createNewAuthor(authorObj)
     })
+    document.getElementById("book_form").addEventListener("submit", function (e) {
+        e.preventDefault()
+        const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
+        createNewAuthor(bookObj)
+    })
 }
 // home
 
