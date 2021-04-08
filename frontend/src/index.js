@@ -20,7 +20,6 @@ const showBooks = function() {
     const renderBooks = function(books) {
         console.log(books)
         books.forEach(book => {
-            debugger
             rootEl.innerHTML += `<p class="book" id=${book.id}>${book.title} — ${book.author_name}</p>`
         })
         // document.querySelectorAll(".book").forEach(book => {
@@ -81,22 +80,20 @@ const newAuthor = `<form id="author_form">
 </form>`
 
 // authors new
-    // const createNewAuthor = function(authorObj) {
-        // fetch request POST
-        // .then (first promise)
-        // .then (second promise, bulk of work)
-    // }
-
     function createNewAuthor(authorObj) {
         fetch(`http://localhost:3000/authors`, {
           method: "POST",
-          body: authorObj,
+          headers: {
+              "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(authorObj)
         })
-          .then((res) => res.json())
-          .then((author) => {
-            const newAuthor = new Author(author);
-            rootEl.innerHTML += `<p class="author" id=${newAuthor.id}>${newAuthor.name}</p> <p>${newAuthor.bio}</p>` // renderSingleAuthor()
-          })
+        .then((res) => res.json())
+        .then((author) => {
+        const newAuthor = new Author(author)
+        rootEl.innerHTML += `<p class="author" id=${newAuthor.id}>${newAuthor.name}</p> <p>${newAuthor.bio}</p>` // renderSingleAuthor()
+        })
       }
 // authors new
 
@@ -104,8 +101,8 @@ const showHome = function() {
     rootEl.innerHTML += newAuthor
     document.getElementById("author_form").addEventListener("submit", function (e) {
         e.preventDefault()
-        // grab name/bio data from the form, then enter it into...
-        // createNewAuthor()
+        const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
+        createNewAuthor(authorObj)
     })
 }
 // home
