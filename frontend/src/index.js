@@ -3,6 +3,24 @@ const headerHome = document.getElementById('headerHome')
 const headerBooks = document.getElementById('headerBooks')
 const headerAuthors = document.getElementById('headerAuthors')
 
+const newAuthorForm = `<b>New Author</b>
+<form id="author_form">
+<label>Name:</label><br>
+<input type="text" id="name"><br>
+<label>Bio:</label><br>
+<input type="text" id="bio">
+<p><input type="submit" value="Submit"></p>
+</form>`
+
+const newBookForm = `<b>New Book</b>
+<form id="book_form">
+<label>Title:</label><br>
+<input type="text" id="title"><br>
+<label>Page count:</label><br>
+<input type="text" id="pages">
+<p><input type="submit" value="Submit"></p>
+</form>`
+
 // books index
 const showBooks = function() {
     fetch(`http://localhost:3000/books`)
@@ -36,7 +54,7 @@ const showSingleAuthor = function(e) {
             const newBook = new Book(bookObj)
             document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
         })
-        rootEl.innerHTML += newBookForm
+        rootEl.innerHTML += newBookForm // had to place this IN the promise so it wouldn't show up at the top of the rootEl; asynchronous JS at play
     })
 }
 
@@ -55,14 +73,6 @@ const showSingleAuthor = function(e) {
 // authors index
 
 // home 
-    const newAuthorForm = `<p><b>New Author</b></p>
-    <form id="author_form">
-    <label>Name:</label><br>
-    <input type="text" id="name"><br>
-    <label>Bio:</label><br>
-    <input type="text" id="bio">
-    <p><input type="submit" value="Submit"></p>
-    </form>`
 
 // authors new
     function createNewAuthor(authorObj) {
@@ -83,14 +93,6 @@ const showSingleAuthor = function(e) {
 // authors new
 
 // books new
-    const newBookForm = `<p><b>New Book</b></p>
-    <form id="book_form">
-    <label>Title:</label><br>
-    <input type="text" id="title"><br>
-    <label>Page count:</label><br>
-    <input type="text" id="pages">
-    <p><input type="submit" value="Submit"></p>
-    </form>`
 
     function createNewBook(bookObj) {
         fetch(`http://localhost:3000/books`, {
