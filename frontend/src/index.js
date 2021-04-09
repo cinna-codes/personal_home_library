@@ -36,6 +36,7 @@ const showSingleAuthor = function(e) {
             const newBook = new Book(bookObj)
             document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
         })
+        rootEl.innerHTML += newBookForm
     })
 }
 
@@ -54,12 +55,13 @@ const showSingleAuthor = function(e) {
 // authors index
 
 // home 
-    const newAuthorForm = `<form id="author_form">
+    const newAuthorForm = `<p><b>New Author</b></p>
+    <form id="author_form">
     <label>Name:</label><br>
     <input type="text" id="name"><br>
     <label>Bio:</label><br>
-    <input type="text" id="bio"><br>
-    <input type="submit" value="Submit">
+    <input type="text" id="bio">
+    <p><input type="submit" value="Submit"></p>
     </form>`
 
 // authors new
@@ -81,12 +83,13 @@ const showSingleAuthor = function(e) {
 // authors new
 
 // books new
-    const newBookForm = `<form id="book_form">
+    const newBookForm = `<p><b>New Book</b></p>
+    <form id="book_form">
     <label>Title:</label><br>
     <input type="text" id="title"><br>
     <label>Page count:</label><br>
-    <input type="text" id="pages"><br>
-    <input type="submit" value="Submit">
+    <input type="text" id="pages">
+    <p><input type="submit" value="Submit"></p>
     </form>`
 
     function createNewBook(bookObj) {
