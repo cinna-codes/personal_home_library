@@ -8,7 +8,7 @@ class Author {
 
     renderSingleAuthor() {
         return `<p id=${this.id} class="author">${this.name} <br>
-        <i>${this.bio}</i>
+        — ${this.bio}
         </p>`
     }
 }

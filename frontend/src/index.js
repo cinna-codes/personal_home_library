@@ -33,16 +33,16 @@ const showSingleAuthor = function(e) {
             rootEl.innerHTML += newAuthor.renderSingleAuthor()
         })
 
-        fetch(`http://localhost:3000/authors/${id}/books`)
-        .then((res) => res.json())
-        .then((books) => {
-            rootEl.innerHTML += `<ul></ul>`
+    fetch(`http://localhost:3000/authors/${id}/books`)
+    .then((res) => res.json())
+    .then((books) => {
+        rootEl.innerHTML += `<ul></ul>`
 
-            books.forEach(bookObj => {
-                const newBook = new Book(bookObj)
-                document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
-            })
-        })    // // debugger
+        books.forEach(bookObj => {
+            const newBook = new Book(bookObj)
+            document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
+        })
+    })
 }
 
 // authors index
