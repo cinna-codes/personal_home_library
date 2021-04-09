@@ -23,13 +23,8 @@ const newBookForm = `<b>New Book</b>
 
 // books index
 const showBooks = function() {
-    fetch(`http://localhost:3000/books`)
-    .then((res) => res.json())
-    .then((books) => {
-        books.forEach(bookObj => {
-            const newBook = new Book(bookObj)
-            rootEl.innerHTML += newBook.renderSingleBook()
-        })
+    Book.all.forEach(book => {
+        rootEl.innerHTML += book.renderSingleBook()
     })
 }
 // books index
@@ -44,22 +39,14 @@ const showSingleAuthor = function(e) {
         const newAuthor = new Author(author)
         rootEl.innerHTML += newAuthor.renderSingleAuthor()
     })
+    
+    const books = Book.all.filter(book => {
+        return book.author_id === parseInt(id)
+    })
+    rootEl.innerHTML += `<ul></ul>`
 
-    fetch(`http://localhost:3000/authors/${id}/books`)
-    .then((res) => res.json())
-    .then((books) => {
-        rootEl.innerHTML += `<ul></ul>`
-
-        books.forEach(bookObj => {
-            const newBook = new Book(bookObj)
-            document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
-        })
-        rootEl.innerHTML += newBookForm // had to place this IN the promise so it wouldn't show up at the top of the rootEl; asynchronous JS at play
-        document.getElementById("book_form").addEventListener("submit", function (ev) {
-            ev.preventDefault()
-            const bookObj = {title: book_form.title.value, pages: book_form.pages.value, author_id: id}
-            createNewBook(bookObj)
-        })
+    books.forEach(book => {
+        document.querySelector("ul").innerHTML += `<li>${book.renderSingleBook()}</li>`
     })
 }
 
@@ -133,7 +120,20 @@ const clearRootEl = function() {
 }
 headerHome.addEventListener("click", clearRootEl)
 headerHome.addEventListener("click", showHome)
-headerBooks.addEventListener("click", clearRootEl)
-headerBooks.addEventListener("click", showBooks)
 headerAuthors.addEventListener("click", clearRootEl)
 headerAuthors.addEventListener("click", showAuthors)
+
+function fetchAllBooks() {
+    fetch(`http://localhost:3000/books`)
+    .then((res) => res.json())
+    .then((books) => {
+        books.forEach(bookObj => {
+            const newBook = new Book(bookObj)
+            // rootEl.innerHTML += newBook.renderSingleBook()
+        })
+        headerBooks.addEventListener("click", clearRootEl)
+        headerBooks.addEventListener("click", showBooks)
+    })
+}
+
+fetchAllBooks()
