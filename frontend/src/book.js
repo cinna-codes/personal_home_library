@@ -3,6 +3,7 @@ class Book {
         this.title = bookObj.title
         this.pages = bookObj.pages
         this.author_name = bookObj.author_name
+        this.author_id = bookObj.author_id
         Book.all.push(this);
     }
 

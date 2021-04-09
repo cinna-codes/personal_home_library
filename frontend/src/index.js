@@ -39,11 +39,11 @@ const showSingleAuthor = function(e) {
     const id = e.target.id
     clearRootEl()
     fetch(`http://localhost:3000/authors/${id}`)
-        .then((res) => res.json())
-        .then(author => {
-            const newAuthor = new Author(author)
-            rootEl.innerHTML += newAuthor.renderSingleAuthor()
-        })
+    .then((res) => res.json())
+    .then(author => {
+        const newAuthor = new Author(author)
+        rootEl.innerHTML += newAuthor.renderSingleAuthor()
+    })
 
     fetch(`http://localhost:3000/authors/${id}/books`)
     .then((res) => res.json())
@@ -55,6 +55,11 @@ const showSingleAuthor = function(e) {
             document.querySelector("ul").innerHTML += `<li>${newBook.renderSingleBook()}</li>`
         })
         rootEl.innerHTML += newBookForm // had to place this IN the promise so it wouldn't show up at the top of the rootEl; asynchronous JS at play
+        document.getElementById("book_form").addEventListener("submit", function (ev) {
+            ev.preventDefault()
+            const bookObj = {title: book_form.title.value, pages: book_form.pages.value, author_id: id}
+            createNewBook(bookObj)
+        })
     })
 }
 
@@ -119,11 +124,11 @@ const showHome = function() {
         const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
         createNewAuthor(authorObj)
     })
-    document.getElementById("book_form").addEventListener("submit", function (e) {
-        e.preventDefault()
-        const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
-        createNewBook(bookObj)
-    })
+    // document.getElementById("book_form").addEventListener("submit", function (e) {
+    //     e.preventDefault()
+    //     const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
+    //     createNewBook(bookObj)
+    // })
 }
 // home
 
