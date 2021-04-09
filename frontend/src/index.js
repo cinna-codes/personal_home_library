@@ -16,12 +16,6 @@ const showBooks = function() {
 }
 // books index
 
-// books show
-    // fetch request
-    // rootEl.innerHTML = ``
-    // rootEl.innerHTML += `<p>book title</p> <p>book author_name</p> <p>book summary</p>`
-// books show
-
 const showSingleAuthor = function(e) {
     console.log(e.target)
     const id = e.target.id
@@ -51,7 +45,6 @@ const showSingleAuthor = function(e) {
         .then((res) => res.json())
         .then((authors) => {
             authors.forEach(authorObj => {
-                //debugger
                 const newAuthor = new Author(authorObj)
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
@@ -61,13 +54,13 @@ const showSingleAuthor = function(e) {
 // authors index
 
 // home 
-const newAuthor = `<form id="author_form">
-<label>Name:</label><br>
-<input type="text" id="name" value="Name"><br>
-<label>Bio:</label><br>
-<input type="text" id="bio" value="Bio"><br>
-<input type="submit" value="Submit">
-</form>`
+    const newAuthorForm = `<form id="author_form">
+    <label>Name:</label><br>
+    <input type="text" id="name"><br>
+    <label>Bio:</label><br>
+    <input type="text" id="bio"><br>
+    <input type="submit" value="Submit">
+    </form>`
 
 // authors new
     function createNewAuthor(authorObj) {
@@ -88,11 +81,11 @@ const newAuthor = `<form id="author_form">
 // authors new
 
 // books new
-    const newBook = `<form id="book_form">
+    const newBookForm = `<form id="book_form">
     <label>Title:</label><br>
-    <input type="text" id="title" value="Title"><br>
+    <input type="text" id="title"><br>
     <label>Page count:</label><br>
-    <input type="text" id="pages" value="Page count"><br>
+    <input type="text" id="pages"><br>
     <input type="submit" value="Submit">
     </form>`
 
@@ -114,8 +107,8 @@ const newAuthor = `<form id="author_form">
 // books new
 
 const showHome = function() {
-    rootEl.innerHTML += newAuthor
-    rootEl.innerHTML += newBook
+    rootEl.innerHTML += newAuthorForm
+    rootEl.innerHTML += newBookForm
     document.getElementById("author_form").addEventListener("submit", function (e) {
         e.preventDefault()
         const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
