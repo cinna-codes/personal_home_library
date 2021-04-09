@@ -15,7 +15,6 @@ class BooksController < ApplicationController
 
     def create
         book = Book.new(book_params)
-        binding.pry
         if book.save
             render json: book
         end
