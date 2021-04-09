@@ -123,20 +123,9 @@ const showSingleAuthor = function(e) {
       }
 // books new
 
-// const showHome = function() {
-//     rootEl.innerHTML += newAuthorForm
-//     rootEl.innerHTML += newBookForm
-//     document.getElementById("author_form").addEventListener("submit", function (e) {
-//         e.preventDefault()
-//         const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
-//         createNewAuthor(authorObj)
-//     })
-//     document.getElementById("book_form").addEventListener("submit", function (e) {
-//         e.preventDefault()
-//         const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
-//         createNewBook(bookObj)
-//     })
-// }
+const showHome = function() {
+    rootEl.innerHTML += `<p>Welcome to your personalized home library! You can keep track of what books you own and by what authors by navigating to the "Books" and "Authors" tabs.</p>`
+}
 // home
 
 const clearRootEl = function() {
