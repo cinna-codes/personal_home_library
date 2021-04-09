@@ -72,7 +72,6 @@ const showSingleAuthor = function(e) {
                 const newAuthor = new Author(authorObj)
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
-            document.querySelectorAll(".author").forEach(singleAuthor => singleAuthor.addEventListener("click", showSingleAuthor))
             
             rootEl.innerHTML += newAuthorForm
             document.getElementById("author_form").addEventListener("submit", function (e) {
@@ -80,6 +79,7 @@ const showSingleAuthor = function(e) {
                 const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
                 createNewAuthor(authorObj)
             })
+            document.querySelectorAll(".author").forEach(singleAuthor => singleAuthor.addEventListener("click", showSingleAuthor))
         })
     }
 // authors index
