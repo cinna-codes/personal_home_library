@@ -73,6 +73,13 @@ const showSingleAuthor = function(e) {
                 rootEl.innerHTML += newAuthor.renderSingleAuthor()
             })
             document.querySelectorAll(".author").forEach(singleAuthor => singleAuthor.addEventListener("click", showSingleAuthor))
+            
+            rootEl.innerHTML += newAuthorForm
+            document.getElementById("author_form").addEventListener("submit", function (e) {
+                e.preventDefault()
+                const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
+                createNewAuthor(authorObj)
+            })
         })
     }
 // authors index
@@ -116,20 +123,20 @@ const showSingleAuthor = function(e) {
       }
 // books new
 
-const showHome = function() {
-    rootEl.innerHTML += newAuthorForm
-    rootEl.innerHTML += newBookForm
-    document.getElementById("author_form").addEventListener("submit", function (e) {
-        e.preventDefault()
-        const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
-        createNewAuthor(authorObj)
-    })
-    // document.getElementById("book_form").addEventListener("submit", function (e) {
-    //     e.preventDefault()
-    //     const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
-    //     createNewBook(bookObj)
-    // })
-}
+// const showHome = function() {
+//     rootEl.innerHTML += newAuthorForm
+//     rootEl.innerHTML += newBookForm
+//     document.getElementById("author_form").addEventListener("submit", function (e) {
+//         e.preventDefault()
+//         const authorObj = {name: author_form.name.value, bio: author_form.bio.value}
+//         createNewAuthor(authorObj)
+//     })
+//     document.getElementById("book_form").addEventListener("submit", function (e) {
+//         e.preventDefault()
+//         const bookObj = {title: book_form.title.value, pages: book_form.pages.value}
+//         createNewBook(bookObj)
+//     })
+// }
 // home
 
 const clearRootEl = function() {
