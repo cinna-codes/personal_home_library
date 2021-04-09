@@ -15,6 +15,7 @@ class BooksController < ApplicationController
 
     def create
         book = Book.new(book_params)
+        binding.pry
         if book.save
             render json: book
         end
@@ -22,6 +23,6 @@ class BooksController < ApplicationController
 
     private
     def book_params
-        params.require(:book).permit(:title, :pages)
+        params.require(:book).permit(:title, :pages, :author_id)
     end
 end
